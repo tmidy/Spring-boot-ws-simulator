@@ -1,0 +1,67 @@
+<definitions name="HelloServiceWithSchema"
+   targetNamespace="http://www.examples.com/wsdl/HelloServiceWithSchema.wsdl"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:tns="http://www.examples.com/wsdl/HelloServiceWithSchema.wsdl"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:sayHello="http:/com.choubida/hello/sayHello">
+ 
+	<types>
+        <schema targetNamespace="http:/com.choubida/hello/sayHello" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="HelloRequest">
+        <complexType  >
+          <sequence>
+            <element name="sayHi" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HelloResponse">
+        <complexType >
+          <sequence>
+            <element name="respond" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+ 
+  </types>
+ 
+ 
+   <message name="SayHelloRequest">
+      <part name="parameters" element="sayHello:HelloRequest"/>
+   </message>
+	
+   <message name="SayHelloResponse">
+      <part name="parameters" element="sayHello:HelloResponse"/>
+   </message>
+
+   <portType name="Hello_PortType_WithSchema">
+      <operation name="sayHello">
+         <input message="tns:SayHelloRequest"/>
+         <output message="tns:SayHelloResponse"/>
+      </operation>
+   </portType>
+
+   <binding name="Hello_Binding_WithSchema" type="tns:Hello_PortType_WithSchema">
+      <soap:binding style="document"
+         transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="sayHello">
+         <soap:operation soapAction="sayHello"/>
+         <input>
+             <soap:body use="literal"/>
+         </input>
+		
+         <output>
+           <soap:body use="literal"/>
+         </output>
+      </operation>
+   </binding>
+
+   <service name="Hello_Service_WithSchema">
+      <documentation>WSDL File for HelloService</documentation>
+      <port binding="tns:Hello_Binding_WithSchema" name="Hello_PortType_WithSchema">
+         <soap:address
+            location="http://com.choubida/hello/SayHello/" />
+      </port>
+   </service>
+</definitions>

@@ -1,0 +1,5 @@
+<pub:PublishARPResponse
+        xmlns:pub="http://orange-business.com/Prov_ProdActivity_TPRV_GenericConnector/ARP/services/PublishARP">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <flowid>Bonjour Jean</flowid>
+</pub:PublishARPResponse>
