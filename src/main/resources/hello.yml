@@ -1,2 +1,2 @@
-input=D:/bouchons/input/
-output=D:/bouchons/output/
+desc: sayHi
+responsesTemplates: D:\tools\Perso\GitRepo\spring-boot-ws-simulator\src\main\resources\templates\Hello

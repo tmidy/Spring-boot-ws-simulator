@@ -6,28 +6,31 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
- * Created by tmidy on 07/05/2015.
+ * Created by Tangi Midy on 07/05/2015.
  */
 @Component
 @ConfigurationProperties(locations = "classpath:hello.yml")
 public class HelloTemplateConfiguration {
 
+    private String desc;
 
-   /* // Path to the templates
+    private static final String PREFIX = "Reponse_";
+
+    // Path to the templates
     private String responsesTemplates;
-
-    // Valeur Pivot
-    private List<String> arpDesc = new ArrayList<String>();
 
     private HashMap<String, String> templatesResponsesMapping = new HashMap<String, String>();
 
-    public List<String> getArpDesc() {
-        return arpDesc;
+    public String getDesc() {
+
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public String getResponsesTemplates() {
@@ -42,12 +45,12 @@ public class HelloTemplateConfiguration {
     @Async
     public void initTemplatesList() {
         for (File f : new File(getResponsesTemplates()).listFiles()) {
-            String key = f.getName().split("Reponse_")[1];
+            String key = f.getName().split(PREFIX)[1];
             templatesResponsesMapping.put(key, f.getAbsolutePath());
         }
     }
 
     public HashMap<String, String> getTemplatesResponsesMapping() {
         return templatesResponsesMapping;
-    }*/
+    }
 }
