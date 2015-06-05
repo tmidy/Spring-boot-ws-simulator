@@ -1,1 +1,1 @@
-var app = angular.module('SaltoWSApp', []);
+var app = angular.module('spring-boot-wsapp', []);

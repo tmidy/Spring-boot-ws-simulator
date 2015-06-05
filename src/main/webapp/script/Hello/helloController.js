@@ -1,5 +1,13 @@
-angular.module('SaltoWSApp')
-    .controller('HelloController', function ( $scope) {
+angular.module('spring-boot-wsapp')
+    .controller('HelloController', function ($scope, HelloService) {
         $scope.userName = "";
-        console.log("Chargé");
+        $scope.connect = function () {
+            HelloService.connect();
+        }
+        $scope.sendName = function () {
+            HelloService.sendName();
+        }
+        $scope.disconnect = function () {
+            HelloService.disconnect();
+        }
     });

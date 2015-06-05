@@ -40,8 +40,6 @@ public class HelloWithSchemaEndpoint extends ParentEndpoint implements HelloPort
             String request = treatRequest(parameters);
             String valeur = XmlReader.readValue(request, helloTemplateConfiguration.getDesc());
             response = getResponseFromMap(valeur);
-
-            // response.setRespond(valeur);
             treateResponse(response);
         } catch (IOException e) {
             e.printStackTrace();

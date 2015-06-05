@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>saltows</title>
+    <title>SpringBoot WS</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -21,26 +21,29 @@
     <!-- endbuild -->
     <!-- build:css assets/styles/main.css -->
     <link rel="stylesheet" href="assets/styles/main.css">
-    <link rel="stylesheet" href="assets/styles/saltows.css">
+    <link rel="stylesheet" href="assets/styles/appws.css">
 
-    <script src="components/jquery/dist/jquery.js"></script>
+    <script src="components/jquery/dist/jquery.min.js"></script>
     <script src="components/stomp-websocket/lib/stomp.min.js"></script>
     <script src="components/sockjs-client/dist/sockjs.js"></script>
-    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="components/json3/lib/json3.js"></script>
-    <script src="components/angular/angular.js"></script>
+    <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="components/json3/lib/json3.min.js"></script>
+    <script src="components/angular/angular.min.js"></script>
     <!-- endbuild -->
     <!-- Start app build -->
     <script src="script/app.js"></script>
+    <script src="script/service/helloservice.js"></script>
     <script src="script/Hello/helloController.js"></script>
+
+
     <!-- endbuild -->
 </head>
 
-<body ng-app="SaltoWSApp">
+<body ng-app="spring-boot-wsapp">
 <div>
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <h1 translate="login.title">Hello</h1>
+            <h3 translate="login.title">Hello REST</h3>
 
             <form class="form" role="form" action="http://localhost:8080/hello/sayHi"
                   ng-controller="HelloController" method="post">
@@ -51,9 +54,26 @@
                 <button type="submit" class="btn btn-primary" translate="login.form.button">Submit</button>
             </form>
 
-        </div>
-    </div>
+            <h3 translate="login.title">Hello WebSocket</h3>
+            <div ng-controller="HelloController" >
 
+
+                <div id="conversationDiv" class="form-group">
+                    <label>What is your name? </label><input type="text" id="name"/>
+                    <button id="sendName" ng-click="sendName()">Send</button>
+
+                </div>
+                <div class="form-group">
+                    <button id="connect" ng-click="connect()">Connect</button>
+                    <button id="disconnect" disabled="disabled" ng-click="disconnect()">Disconnect</button>
+                </div>
+                <p id="response"></p>
+            </div>
+
+        </div>
+
+
+    </div>
 
 </div>
 </body>
