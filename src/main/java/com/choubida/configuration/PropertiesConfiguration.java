@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 /**
- * Created by tmidy on 26/03/2015.
+ * Created by choubida on 26/03/2015.
  */
 @Component
 @ConfigurationProperties(locations = "application.properties")
